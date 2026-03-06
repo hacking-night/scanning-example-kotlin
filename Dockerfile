@@ -15,7 +15,7 @@ COPY src ./src
 RUN chmod +x gradlew && ./gradlew build -x test
 
 # Runtime stage
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:21-jre-alpine-3.23
 
 WORKDIR /app
 
