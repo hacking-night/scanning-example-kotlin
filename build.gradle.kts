@@ -15,6 +15,11 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-core:2.14.0")
 }
 
+// Wir brauchen ein Lockfile für Trivy
+dependencyLocking {
+    lockAllConfigurations()
+}
+
 tasks.test {
     useJUnitPlatform()
 }
