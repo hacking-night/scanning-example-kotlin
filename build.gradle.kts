@@ -16,6 +16,7 @@ dependencies {
 }
 
 // Wir brauchen ein Lockfile für Trivy
+// ./gradlew dependencies --write-locks
 dependencyLocking {
     lockAllConfigurations()
 }
