@@ -19,7 +19,7 @@ FROM eclipse-temurin:21-jre-alpine-3.23
 
 WORKDIR /app
 
-# Copy the built JAR and resources from builder stage
+# Copy the built classes and resources from builder stage
 COPY --from=builder /app/build/classes/kotlin/main ./classes
 COPY --from=builder /app/src/main/resources ./resources
 
@@ -33,8 +33,8 @@ RUN addgroup -g 1000 appuser && \
 
 USER appuser
 
-# Set the classpath
-ENV CLASSPATH="/app/classes:/app/resources:${CLASSPATH}"
+# Expose the web server port
+EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-cp", "${CLASSPATH}", "org.example.MainKt"]
+CMD ["java", "-cp", "/app/classes:/app/resources", "org.example.MainKt"]
