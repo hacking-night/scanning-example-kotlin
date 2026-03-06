@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    // log4shell
+    implementation("org.apache.logging.log4j:log4j-core:2.14.0")
 }
 
 tasks.test {
