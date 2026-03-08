@@ -35,9 +35,7 @@ jobs:
       - uses: JarvusInnovations/background-action@v1
         name: Bootstrap System Under Test (SUT)
         with:
-          run: |
-            ./gradlew run &
-            echo test
+          run: ./gradlew run
           # your step-level and job-level environment variables are available to your commands as-is
           # npm install will count towards the wait-for timeout
           # whenever possible, move unrelated scripts to a different step
