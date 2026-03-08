@@ -35,20 +35,14 @@ jobs:
         name: Bootstrap System Under Test (SUT)
         with:
           run: |
-            npm install
-            PORT=$API_PORT node test/server.js &
-            PORT=2121 node test/server.js &
-            PORT=3232 node test/server.js &
+            ./gradlew run
           # your step-level and job-level environment variables are available to your commands as-is
           # npm install will count towards the wait-for timeout
           # whenever possible, move unrelated scripts to a different step
           # to background multiple processes: add & to the end of the command
 
           wait-on: |
-            http://localhost:${{ env.API_PORT }}
-            http-get://localhost:2121
-            tcp:localhost:3232
-            file://very-important-secrets.txt
+            http://localhost:8080
           # IMPORTANT: to use environment variables in wait-on, you must use this form: ${{ env.VAR }}
           # See wait-on section below for all resource types and prefixes
 
@@ -68,5 +62,5 @@ jobs:
           working-directory: backend
           # sets the working directory (cwd) for the shell running commands
 
-      - name: Run with Gradle
-        run: ./gradlew run
+      - name: Scan
+        run: echo TODO
