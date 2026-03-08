@@ -40,7 +40,7 @@ jobs:
           # npm install will count towards the wait-for timeout
           # whenever possible, move unrelated scripts to a different step
           # to background multiple processes: add & to the end of the command
-          wait-on: "http://localhost:8080"
+          wait-on: "http-get://localhost:8080"
           # IMPORTANT: to use environment variables in wait-on, you must use this form: ${{ env.VAR }}
           # See wait-on section below for all resource types and prefixes
 
@@ -50,7 +50,7 @@ jobs:
           log-output-resume: stderr
           # Eliminates previously output stderr log entries from post-run output
 
-          wait-for: 5m
+          wait-for: 1m
 
           log-output: stderr,stdout # same as true
 
