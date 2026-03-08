@@ -60,8 +60,5 @@ jobs:
           log-output-if: failure
           # failure = exit-early or timeout
 
-          working-directory: backend
-          # sets the working directory (cwd) for the shell running commands
-
       - name: Scan
         run: echo TODO
