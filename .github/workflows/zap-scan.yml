@@ -35,7 +35,7 @@ jobs:
           wait-on: "http-get://localhost:8080"
           tail: true # true = stderr,stdout
           log-output-resume: stderr
-          wait-for: 1m
+          wait-for: 2m
           log-output: stderr,stdout # same as true
           log-output-if: failure
 
