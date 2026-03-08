@@ -36,26 +36,14 @@ jobs:
         name: Bootstrap System Under Test (SUT)
         with:
           run: "./gradlew run && echo foobar"
-          # your step-level and job-level environment variables are available to your commands as-is
-          # npm install will count towards the wait-for timeout
-          # whenever possible, move unrelated scripts to a different step
-          # to background multiple processes: add & to the end of the command
           wait-on: "http-get://localhost:8080"
-          # IMPORTANT: to use environment variables in wait-on, you must use this form: ${{ env.VAR }}
-          # See wait-on section below for all resource types and prefixes
-
           tail: true # true = stderr,stdout
-          # This will allow you to monitor the progress live
-
           log-output-resume: stderr
-          # Eliminates previously output stderr log entries from post-run output
-
           wait-for: 1m
-
           log-output: stderr,stdout # same as true
-
           log-output-if: failure
-          # failure = exit-early or timeout
 
-      - name: Scan
-        run: echo TODO
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.3.0
+        with:
+          target: 'http://localhost:8080'
