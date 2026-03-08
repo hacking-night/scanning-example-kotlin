@@ -1,12 +1,8 @@
 name: OWASP ZAP Scan
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
-      - main
       - zap
   workflow_dispatch:
 
@@ -44,6 +40,6 @@ jobs:
           log-output-if: failure
 
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.3.0
+        uses: zaproxy/action-baseline@v0.15.0
         with:
           target: 'http://localhost:8080'
